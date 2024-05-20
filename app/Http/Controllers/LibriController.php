@@ -10,6 +10,7 @@ class LibriController extends Controller
     public function lista() 
     {
         $libri = Libro::paginate();
+        dump($libri);
         return view('lista', [
             'libri' => $libri,
         ]);
@@ -27,7 +28,7 @@ class LibriController extends Controller
     }
     public function delete($id) 
     {
-        $libro = Libro::findOfFail($id);
+        $libro = Libro::findOrFail($id);
         $libro->delete();
         return view("delete");
     }

@@ -10,7 +10,7 @@ Route::get('/', function () {
 
 Route::get('/lista', [LibriController::class,'lista'])->name('lista');
 
-Route::get('/dettaglio', [LibriController::class,'dettaglio'])->name('dettaglio');
+Route::get('/dettaglio/{id}', [LibriController::class,'dettaglio'])->name('dettaglio');
 
 Route::get('/add/{id}', [LibriController::class,'add'])->name('add');
 
@@ -18,4 +18,4 @@ Route::get('/delete/{id}', [LibriController::class,'delete'])->name('delete');
 
 Route::get('/modify/{id}', [LibriController::class,'modify'])->name('modify');
 
-Route::post('/lista',           [LibriController::class, 'store'])->name('books.store');
+Route::post('/lista',       [LibriController::class, 'store'])->name('books.store');

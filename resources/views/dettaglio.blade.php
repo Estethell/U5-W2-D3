@@ -1,4 +1,4 @@
-@extends('templates.base')
+@extends('includes.base')
 
 @section('title', "$libro->title - EpiBooks")
 
