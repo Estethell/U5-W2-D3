@@ -2,29 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Libro;
 use Illuminate\Http\Request;
 
 class LibriController extends Controller
 {
     public function lista() 
     {
-       
-        return view("lista");
+        $libri = Libro::paginate();
+        return view('lista', [
+            'libri' => $libri,
+        ]);
     }
-    public function dettaglio() 
+    public function dettaglio($id) 
     {
-        return view("dettaglio");
+        $libro = Libro::findOrFail($id);
+        return view('dettaglio', [
+            'libro' => $libro
+        ]);
     }
     public function add() 
     {
         return view("add");
     }
-    public function delete() 
+    public function delete($id) 
     {
+        $libro = Libro::findOfFail($id);
+        $libro->delete();
         return view("delete");
     }
     public function modify() 
     {
         return view("modify");
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        
+        $newBook = new Libro();
+        $newBook->title = $data['title'];
+        $newBook->author = $data['author'];
+        $newBook->price = $data['price'];
+        $newBook->save();
+
+        
+        return redirect()->route('lista');
     }
 }

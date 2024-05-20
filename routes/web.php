@@ -18,4 +18,4 @@ Route::get('/delete/{id}', [LibriController::class,'delete'])->name('delete');
 
 Route::get('/modify/{id}', [LibriController::class,'modify'])->name('modify');
 
-
+Route::post('/lista',           [LibriController::class, 'store'])->name('books.store');
