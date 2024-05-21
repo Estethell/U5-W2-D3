@@ -1,4 +1,5 @@
 @extends('includes.base')
+@extends('includes.nav')
 
 @section('title', 'Libreria - Lista di libri')
 

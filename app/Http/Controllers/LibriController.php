@@ -10,7 +10,6 @@ class LibriController extends Controller
     public function lista() 
     {
         $libri = Libro::paginate();
-        dump($libri);
         return view('lista', [
             'libri' => $libri,
         ]);
